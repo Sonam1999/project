@@ -1,0 +1,29 @@
+{% extends 'base_layout.html' %}
+{% load crispy_forms_tags %}
+{% block content %}
+<div class="container">
+  <h1>Welcome to the Booking site of Hotel {{title.name}}</h1>
+  <form class="site-form" action="{% url 'rb:book' slug=title.slug %}" method="POST">
+  {% csrf_token %}
+  {{ form | crispy }}
+  <br><br>
+  <div class="row">
+    <div class="col-md-6">
+  <button type="submit" class="btn btn-primary">
+    Confirm Booking
+    </button>
+    </div>
+    </form>
+    <br>
+    <div class="col-md-6">
+      <form class="site-form"action="{% url 'rb:search' %}">
+          <button type="submit" class="btn btn-secondary">
+          Cancel Booking
+        </button>
+      </form>
+    </div>
+    </div>
+</div>
+
+
+{% endblock %}

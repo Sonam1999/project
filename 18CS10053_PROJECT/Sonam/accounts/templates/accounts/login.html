@@ -1,0 +1,18 @@
+{% extends 'base_layout.html' %}
+{% load crispy_forms_tags %}
+{% block content %}
+    <div class="container">
+        <h1>Login.....</h1>
+        <form class="site-form"action="/accounts/login/" method="post">
+            <div class="form-group">
+                {% csrf_token %}
+                {{form | crispy}}
+                {% if request.GET.next%}
+                <input type="hidden" name="next" value="{{request.GET.next}}">
+                {% endif %}
+                <br><br>
+                <input type="submit" value="Login" class="btn btn-outline-dark"/>
+            </div>
+        </form>
+    </div>
+{% endblock %}

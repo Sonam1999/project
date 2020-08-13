@@ -1,0 +1,25 @@
+{% extends 'base_layout.html' %}
+
+{% block content %}
+    <div class="container">
+        <h1>Available Hotels  </h1><br><br>
+        <div class="hotel">
+            {% for result in results %}
+            <div class="row">
+                <div class="col-md-2">
+                <h2><a href="{% url 'rb:details' slug=result.slug %}">{{result.name}}</a> 
+                </h2>
+                <p>{{result.location}}</p>
+                <h5>{{result.status}}</h5>
+                </div>
+                <div class="col-md-10">
+                <img src="{{result.thumb1.url}}"/>
+                </div>
+            </div>
+            <br><br>
+            {% endfor %}
+        </div>
+    </div>
+
+
+{% endblock %}
